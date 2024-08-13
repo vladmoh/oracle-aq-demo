@@ -52,6 +52,9 @@ public class Receive {
             conn.start();
 
             TextMessage received = (TextMessage) consumer.receive(5000L);
+            if (received == null) {
+                System.out.println("nothing received");
+            }
             System.out.println("Received a message! " + received.getText());
         } finally {
             if (conn != null) {
